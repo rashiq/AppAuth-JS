@@ -24,6 +24,7 @@ import {BaseTokenRequestHandler, TokenRequestHandler} from '../token_request_han
 import {TokenResponse} from '../token_response';
 import { AuthorizationResponse } from '../authorization_response';
 import { StringMap } from '../types';
+import opener = require('opener');
 
 /* Some interface declarations for Material design lite. */
 
@@ -113,7 +114,9 @@ export class App {
     });
 
     if (this.configuration) {
-      this.authorizationHandler.performAuthorizationRequest(this.configuration, request);
+      this.authorizationHandler.performAuthorizationRequest(this.configuration, request, url => {
+        opener(url)
+      });
     } else {
       this.showMessage(
           'Fetch Authorization Service configuration, before you make the authorization request.');

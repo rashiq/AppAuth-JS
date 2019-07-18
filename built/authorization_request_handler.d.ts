@@ -53,7 +53,7 @@ export declare abstract class AuthorizationRequestHandler {
     /**
      * Makes an authorization request.
      */
-    abstract performAuthorizationRequest(configuration: AuthorizationServiceConfiguration, request: AuthorizationRequest): void;
+    abstract performAuthorizationRequest(configuration: AuthorizationServiceConfiguration, request: AuthorizationRequest, openHandler?: (url: string) => void): void;
     /**
      * Checks if an authorization flow can be completed, and completes it.
      * The handler returns a `Promise<AuthorizationRequestResponse>` if ready, or a `Promise<null>`

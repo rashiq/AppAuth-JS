@@ -7,6 +7,6 @@ export declare class NodeBasedHandler extends AuthorizationRequestHandler {
     httpServerPort: number;
     authorizationPromise: Promise<AuthorizationRequestResponse | null> | null;
     constructor(httpServerPort?: number, utils?: QueryStringUtils, crypto?: Crypto);
-    performAuthorizationRequest(configuration: AuthorizationServiceConfiguration, request: AuthorizationRequest): void;
+    performAuthorizationRequest(configuration: AuthorizationServiceConfiguration, request: AuthorizationRequest, openHandler: (url: string) => void): void;
     protected completeAuthorizationRequest(): Promise<AuthorizationRequestResponse | null>;
 }

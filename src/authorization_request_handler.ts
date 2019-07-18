@@ -146,7 +146,8 @@ export abstract class AuthorizationRequestHandler {
    */
   abstract performAuthorizationRequest(
       configuration: AuthorizationServiceConfiguration,
-      request: AuthorizationRequest): void;
+      request: AuthorizationRequest,
+      openHandler?: (url: string) => void): void;
 
   /**
    * Checks if an authorization flow can be completed, and completes it.
