@@ -23,6 +23,7 @@ import {Crypto} from '../crypto_utils';
 import {log} from '../logger';
 import {BasicQueryStringUtils, QueryStringUtils} from '../query_string_utils';
 import {NodeCrypto} from './crypto_utils';
+import opener = require('opener');
 
 
 class ServerEventsEmitter extends EventEmitter {
@@ -45,7 +46,7 @@ export class NodeBasedHandler extends AuthorizationRequestHandler {
   performAuthorizationRequest(
     configuration: AuthorizationServiceConfiguration,
     request: AuthorizationRequest,
-    openHandler: (url: string) => void) {
+    openHandler?: (url: string) => void) {
     // use opener to launch a web browser and start the authorization flow.
     // start a web server to handle the authorization response.
     const emitter = new ServerEventsEmitter();
@@ -109,7 +110,11 @@ export class NodeBasedHandler extends AuthorizationRequestHandler {
           server.listen(this.httpServerPort);
           const url = this.buildRequestUrl(configuration, request);
           log('Making a request to ', request, url);
-          openHandler(url)
+          if(openHandler) {
+            openHandler(url)
+          } else {
+            opener(url)
+          }
         })
         .catch((error) => {
           log('Something bad happened ', error);
