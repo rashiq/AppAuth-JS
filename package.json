@@ -1,12 +1,12 @@
 {
-  "name": "@openid/appauth",
+  "name": "electron-appauth",
   "version": "1.2.4",
   "description": "A general purpose OAuth client.",
-  "author": "The OpenID Foundation",
+  "author": "Rashiq Zahid",
   "license": "Apache-2.0",
-  "repository": "openid/AppAuth-JS",
+  "repository": "rashiq/AppAuth-JS",
   "bugs": {
-    "url": "https://github.com/openid/AppAuth-JS/issues"
+    "url": "https://github.com/rashiq/AppAuth-JS/issues"
   },
   "files": [
     "src/**",
